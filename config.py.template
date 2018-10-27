@@ -1,0 +1,8 @@
+
+class Config:
+    server_addr = "192.168.1.1"
+    server_port = 1883
+    server_topic = "you/topic
+    user_name = "your username"
+    user_pwd = "your password"
+    dotti_mac = "xx:xx:xx:xx:xx:xx"
