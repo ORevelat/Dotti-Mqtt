@@ -8,7 +8,7 @@ class Connector():
 	"""
 	This class is from the Jeedom plugin BLEA
 
-	Just removed not necessary code
+	Just removed not necessary code.	
 	"""
 
 	def __init__(self,mac):

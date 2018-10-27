@@ -54,6 +54,9 @@ Entry point
 	- server to run continuously
 	-  mqtt client that subscribe to a topic and process messages within 
 
+Requirements:
+	- pip install paho-mqtt
+	
 """
 
 client = mqtt.Client("hass-dotti")
