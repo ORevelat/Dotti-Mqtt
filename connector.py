@@ -17,16 +17,21 @@ class Connector():
 		self.conn = ''
 		self.isconnected = False
 
-	def connect(self, retry=3):
+	def connect(self, retry=3, type='public'):
 		logger.debug('CONNECTOR------Connecting : '+str(self.mac))
 		i=0
 		timeout = time.time() + 15
 		while time.time()<timeout:
 			i = i + 1
 			try:
-				connection = btle.Peripheral(self.mac, btle.ADDR_TYPE_PUBLIC)
-				self.isconnected = True
-				break
+				if type == 'public':
+					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_PUBLIC, iface=globals.IFACE_DEVICE)
+					self.isconnected = True
+					break
+				else:
+					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_RANDOM, iface=globals.IFACE_DEVICE)
+					self.isconnected = True
+					break
 			except Exception as e:
 				logger.debug('CONNECTOR------'+str(e) + ' attempt ' + str(i) )
 				if i >= retry:
@@ -59,7 +64,7 @@ class Connector():
 		self.isconnected = False
 		logger.debug('CONNECTOR------Disconnected...'+ str(self.mac))
 
-	def readCharacteristic(self,handle,retry=1,type='public'):
+	def readCharacteristic(self, handle, retry=1, type='public'):
 		logger.debug('CONNECTOR------Reading Characteristic...'+ str(self.mac))
 		ireadCharacteristic=0
 		while True:
