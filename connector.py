@@ -25,11 +25,11 @@ class Connector():
 			i = i + 1
 			try:
 				if type == 'public':
-					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_PUBLIC, iface=globals.IFACE_DEVICE)
+					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_PUBLIC, iface=0)
 					self.isconnected = True
 					break
 				else:
-					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_RANDOM, iface=globals.IFACE_DEVICE)
+					connection = btle.Peripheral(self.mac, addrType = btle.ADDR_TYPE_RANDOM, iface=0)
 					self.isconnected = True
 					break
 			except Exception as e:
